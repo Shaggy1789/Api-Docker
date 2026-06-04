@@ -1,0 +1,235 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\models\\createproduct\\createproductendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\models\\createproduct\\createproductendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\models\\createproduct\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\models\\createproduct\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\models\\getproducts\\getproductqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\models\\getproducts\\getproductqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\models\\getproducts\\getproductendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\models\\getproducts\\getproductendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81DDED9D-158B-E303-5F62-77A2896D2A5A}|docker-compose.dcproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\docker-compose.override.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{81DDED9D-158B-E303-5F62-77A2896D2A5A}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\services\\catalog\\catalog_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{584A7870-FEF9-4C40-80B7-645B1245748F}|Services\\Catalog\\Catalog_Api\\Catalog_Api.csproj|solutionrelative:services\\catalog\\catalog_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92F3FA09-8A22-4365-8634-CCB0C67FF016}|BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj|c:\\users\\capybaro75\\documents\\microservices netcore\\eshop-services\\src\\buildingblocks\\buildingblocks\\cqrs\\iqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92F3FA09-8A22-4365-8634-CCB0C67FF016}|BuildingBlocks\\BuildingBlocks\\BuildingBlocks.csproj|solutionrelative:buildingblocks\\buildingblocks\\cqrs\\iqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 17,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a83394e3-39c2-4678-a3c8-364b69d78fd3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{f4e46f1e-cf83-40aa-b568-a627394bc994}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a34b1c5d-6d37-4a0c-a8b0-99f8e8158b48}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateProductEndpoint.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductEndpoint.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductEndpoint.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductEndpoint.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductEndpoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T21:07:25.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreateProductCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductCommandHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductCommandHandler.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Models\\CreateProduct\\CreateProductCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T21:07:11.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\Product.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T21:06:18.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetProductEndPoint.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductEndPoint.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductEndPoint.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductEndPoint.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductEndPoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T22:41:35.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetProductQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductQueryHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductQueryHandler.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Models\\GetProducts\\GetProductQueryHandler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T22:41:58.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Program.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Program.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T05:29:52.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\appsettings.json",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\appsettings.json",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-03T16:35:13.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Dockerfile",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog_Api\\Dockerfile",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\Services\\Catalog\\Catalog_Api\\Dockerfile",
+              "RelativeToolTip": "Services\\Catalog\\Catalog_Api\\Dockerfile",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-03T05:30:27.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "docker-compose.override.yml",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\docker-compose.override.yml",
+              "RelativeDocumentMoniker": "docker-compose.override.yml",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\docker-compose.override.yml",
+              "RelativeToolTip": "docker-compose.override.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-06-03T05:31:22.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\BuildingBlocks\\BuildingBlocks\\CQRS\\IQueryHandler.cs",
+              "RelativeDocumentMoniker": "BuildingBlocks\\BuildingBlocks\\CQRS\\IQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Capybaro75\\Documents\\Microservices NetCore\\eshop-services\\src\\BuildingBlocks\\BuildingBlocks\\CQRS\\IQueryHandler.cs",
+              "RelativeToolTip": "BuildingBlocks\\BuildingBlocks\\CQRS\\IQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T05:25:02.051Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
