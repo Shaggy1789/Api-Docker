@@ -1,0 +1,31 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+*.nupkg
+*.vsidx
+*.metadat*
+*.futdcache
+
+## VS
+.vs/
+*.csproj.user
+*.proj.user
+
+## Docker compose cache
+src/obj/Docker/
+
+## Debug output
+src/bin/Debug/
+src/bin/Release/
+
+## IDE
+.idea/
+*.swp
+*.swo
+*DS_Store

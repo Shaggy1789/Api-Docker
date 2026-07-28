@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+
   catalogdb:
     container_name: catalogdb
     image: postgres:15
@@ -12,18 +13,52 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - postgress_catalog:/var/lib/postgresql/data/
-
-  catalog_api:
-    container_name: catalog_api
-    build:
-     context: .
-     dockerfile: Services/Catalog/Catalog_Api/Dockerfile
+      - postgres_catalog:/var/lib/postgresql/data/
+  basketdb:
+    container_name: basketdb
     environment:
-     ASPNETCORE_ENVIRONMENT: Development
-     ConnectionStrings__CatalogDb: Host=catalogdb;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres;
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: BasketDb
+    restart: always
     ports:
-      - "8080:8080"
+      - "5434:5432"
+    volumes:
+      - postgres_basket:/var/lib/postgresql/data/
+  distributedcache:
+    container_name: distributedcache
+    restart: always
+    ports:
+       - "6379:6379"
+  catalog.api:
+    container_name: catalog.api
+    build:
+      context: .
+      dockerfile: Services/Catalog/Catalog_API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__CatalogDb: Host=catalogdb;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres
+    ports:
+      - "6000:8080"
+      - "6060:8081"
     depends_on:
       - catalogdb
-  
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database= Server=localhost;Port=5434;Database=BasketDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - ConnectionStrings__Redis= distributedcache:6379
+    depends_on:
+      - basketdb
+      - distributedcache
+    ports:
+      - "6001:8080"
+      - "6061:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
