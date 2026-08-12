@@ -7,10 +7,13 @@ services:
     image: postgres:15
   distributedcache:
     image: redis
-
+  ordersdb:
+    image: mongo:7
+    ports:
+      - "27017:27017"
   basket.api:
     image: ${DOCKER_REGISTRY-}basket.api
-    build :
+    build:
       context: .
       dockerfile: Services/Basket/Basket.Api/Dockerfile
 
@@ -18,3 +21,4 @@ services:
 volumes:
   postgres_catalog:
   postgres_basket:
+  orders_mongo:

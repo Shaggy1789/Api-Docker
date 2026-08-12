@@ -16,6 +16,7 @@ services:
       - postgres_catalog:/var/lib/postgresql/data/
   basketdb:
     container_name: basketdb
+    image: postgres:15
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -30,6 +31,16 @@ services:
     restart: always
     ports:
        - "6379:6379"
+    volumes:
+      - postgres_catalog:/var/lib/postgresql/data/
+  ordersdb:
+    container_name: ordersdb
+    image: mongo:7
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - orders_mongo:/data/db
   catalog.api:
     container_name: catalog.api
     build:
@@ -62,3 +73,19 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  orders.api:
+    container_name: orders.api
+    build:
+      context: .
+      dockerfile: Services/Orders/Orders_API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MongoDb__ConnectionString= ordersdb:27017
+      - MongoDb__DatabaseName= OrdersDb
+    depends_on:
+      - ordersdb
+      - basket.api
+    ports:
+      - "6002:8080"
+      - "6062:8081"
