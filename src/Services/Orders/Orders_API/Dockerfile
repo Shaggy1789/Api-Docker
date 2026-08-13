@@ -16,5 +16,13 @@ RUN dotnet publish "Orders_API.csproj" -c Release -o /app/publish /p:UseAppHost=
 
 FROM base AS final
 WORKDIR /app
+
+# Evitar el error de inotify en Render (límite de 128 instancias):
+# - usa polling en vez de inotify para el FileSystemWatcher
+# - deshabilita recarga de config en caliente (no es necesaria en produccion)
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
+ENV ASPNETCORE_ENVIRONMENT=Production
+
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Orders_API.dll"]

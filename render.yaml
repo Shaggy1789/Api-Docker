@@ -13,6 +13,10 @@ services:
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      - key: DOTNET_USE_POLLING_FILE_WATCHER
+        value: "true"
+      - key: DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE
+        value: "false"
       # ConnectionStrings__CatalogDb (Neon/Postgres) - configurar en dashboard
       - key: ConnectionStrings__CatalogDb
         sync: false
@@ -27,6 +31,10 @@ services:
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      - key: DOTNET_USE_POLLING_FILE_WATCHER
+        value: "true"
+      - key: DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE
+        value: "false"
       # ConnectionStrings__Database (Neon/Postgres) - configurar en dashboard
       - key: ConnectionStrings__Database
         sync: false
@@ -44,6 +52,10 @@ services:
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      - key: DOTNET_USE_POLLING_FILE_WATCHER
+        value: "true"
+      - key: DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE
+        value: "false"
       # MongoDb__ConnectionString - configurar en dashboard
       - key: MongoDb__ConnectionString
         sync: false
