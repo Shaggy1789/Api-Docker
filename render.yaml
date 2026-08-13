@@ -1,0 +1,55 @@
+# Render Blueprint: despliegue de los 3 microservicios .NET de TechStore.
+# Uso: conectar el repo en Render.com -> "Blueprint" -> apuntar a render.yaml
+# Los secretos se configuran manualmente en el dashboard (sync: false).
+
+services:
+  # ===================== CATALOG API =====================
+  - type: web
+    name: catalog-api-techstore
+    runtime: docker
+    dockerContext: ./src
+    dockerfilePath: ./src/Services/Catalog/Catalog_Api/Dockerfile
+    plan: free
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      # ConnectionStrings__CatalogDb (Neon/Postgres) - configurar en dashboard
+      - key: ConnectionStrings__CatalogDb
+        sync: false
+
+  # ===================== BASKET API =====================
+  - type: web
+    name: basket-api-techstore
+    runtime: docker
+    dockerContext: ./src
+    dockerfilePath: ./src/Services/Basket/Basket.Api/Dockerfile
+    plan: free
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      # ConnectionStrings__Database (Neon/Postgres) - configurar en dashboard
+      - key: ConnectionStrings__Database
+        sync: false
+      # ConnectionStrings__Redis - configurar en dashboard
+      - key: ConnectionStrings__Redis
+        sync: false
+
+  # ===================== ORDERS API =====================
+  - type: web
+    name: orders-api-techstore
+    runtime: docker
+    dockerContext: ./src
+    dockerfilePath: ./src/Services/Orders/Orders_API/Dockerfile
+    plan: free
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      # MongoDb__ConnectionString - configurar en dashboard
+      - key: MongoDb__ConnectionString
+        sync: false
+      # MongoDb__DatabaseName - configurar en dashboard
+      - key: MongoDb__DatabaseName
+        value: OrdersDb
+      # BasketApi__BaseUrl debe apuntar al basket desplegado en Render
+      - key: BasketApi__BaseUrl
+        sync: false

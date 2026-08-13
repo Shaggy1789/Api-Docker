@@ -8,6 +8,12 @@ using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
+builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
+    p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
 // Carter
 builder.Services.AddCarter();
 
@@ -67,6 +73,8 @@ var app = builder.Build();
 
 // HTTP pipeline
 app.UseExceptionHandler();
+
+app.UseCors();
 
 app.MapCarter();
 

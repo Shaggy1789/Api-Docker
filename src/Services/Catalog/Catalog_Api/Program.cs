@@ -3,7 +3,13 @@ using Catalog_Api.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 builder.Services.AddMemoryCache();
+
+builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
+    p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
@@ -27,6 +33,8 @@ builder.Services.AddMarten(opts =>
 var app = builder.Build();
 
 app.UseExceptionHandler();
+
+app.UseCors();
 
 app.MapCarter();
 app.Run();
