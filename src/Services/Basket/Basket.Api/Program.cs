@@ -4,6 +4,7 @@ using BuildingBlocks.Behaviors;
 using BuildingBlocks.Exceptions.Handler;
 using Carter;
 using Marten;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 var assembly = typeof(Program).Assembly;
@@ -31,9 +32,37 @@ builder.Services.AddMarten(opt =>
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+var redisConfig = builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379";
+
+ConfigurationOptions redisOptions;
+if (redisConfig.StartsWith("rediss://", StringComparison.OrdinalIgnoreCase) ||
+    redisConfig.StartsWith("redis://", StringComparison.OrdinalIgnoreCase))
+{
+    var uri = new Uri(redisConfig);
+    var userInfo = uri.UserInfo?.Split(':') ?? Array.Empty<string>();
+    redisOptions = new ConfigurationOptions
+    {
+        EndPoints = { $"{uri.Host}:{(uri.Port > 0 ? uri.Port : 6379)}" },
+        Password = userInfo.Length > 1 ? userInfo[1] : null,
+        Ssl = uri.Scheme == "rediss",
+        AbortOnConnectFail = false,
+        ConnectRetry = 5,
+        ConnectTimeout = 10000,
+        SyncTimeout = 5000
+    };
+}
+else
+{
+    redisOptions = ConfigurationOptions.Parse(redisConfig);
+    redisOptions.AbortOnConnectFail = false;
+    redisOptions.ConnectRetry = 5;
+    redisOptions.ConnectTimeout = 10000;
+    redisOptions.SyncTimeout = 5000;
+}
+
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+    options.ConfigurationOptions = redisOptions;
 });
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
