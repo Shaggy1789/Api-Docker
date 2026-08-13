@@ -10,7 +10,7 @@ namespace Catalog_Api.Models.CreateProduct
     public record CreateProductResult(Guid Id);
     /*inyectamos el documento de postgre y se trabaja con IDocumentSession*/
 
-    internal class CreateProductCommandHandler(IDocumentSession documentSession): ICommandHandler<CreateProductCommand, CreateProductResult>
+    public class CreateProductCommandHandler(IDocumentSession documentSession): ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle (CreateProductCommand request,CancellationToken cancellationToken)
         { 

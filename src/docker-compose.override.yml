@@ -2,37 +2,13 @@ version: '3.4'
 
 services:
 
-  catalogdb:
-    container_name: catalogdb
-    image: postgres:15
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: CatalogDb
-    restart: always
-    ports:
-      - "5433:5432"
-    volumes:
-      - postgres_catalog:/var/lib/postgresql/data/
-  basketdb:
-    container_name: basketdb
-    image: postgres:15
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: BasketDb
-    restart: always
-    ports:
-      - "5434:5432"
-    volumes:
-      - postgres_basket:/var/lib/postgresql/data/
   distributedcache:
     container_name: distributedcache
+    image: redis:7
     restart: always
     ports:
-       - "6379:6379"
-    volumes:
-      - postgres_catalog:/var/lib/postgresql/data/
+      - "6379:6379"
+
   ordersdb:
     container_name: ordersdb
     image: mongo:7
@@ -41,6 +17,7 @@ services:
       - "27018:27017"
     volumes:
       - orders_mongo:/data/db
+
   catalog.api:
     container_name: catalog.api
     build:
@@ -48,22 +25,20 @@ services:
       dockerfile: Services/Catalog/Catalog_API/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__CatalogDb: Host=catalogdb;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres
+      ConnectionStrings__CatalogDb: "Host=ep-sweet-moon-axdkek5x-pooler.c-4.us-east-2.aws.neon.tech;Port=5432;Database=neondb;Username=neondb_owner;Password=npg_Cy4KMHlgz3hD;SSL Mode=Require"
     ports:
       - "6000:8080"
       - "6060:8081"
-    depends_on:
-      - catalogdb
 
   basket.api:
+    container_name: basket.api
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__Database= Server=localhost;Port=5434;Database=BasketDb;User Id=postgres;Password=postgres;Include Error Detail=true
-      - ConnectionStrings__Redis= distributedcache:6379
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8080
+      ASPNETCORE_HTTPS_PORTS: 8081
+      ConnectionStrings__Database: "Host=ep-sweet-moon-axdkek5x-pooler.c-4.us-east-2.aws.neon.tech;Port=5432;Database=neondb;Username=neondb_owner;Password=npg_Cy4KMHlgz3hD;SSL Mode=Require"
+      ConnectionStrings__Redis: "distributedcache:6379"
     depends_on:
-      - basketdb
       - distributedcache
     ports:
       - "6001:8080"
@@ -80,12 +55,13 @@ services:
       context: .
       dockerfile: Services/Orders/Orders_API/Dockerfile
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - MongoDb__ConnectionString= ordersdb:27017
-      - MongoDb__DatabaseName= OrdersDb
-    depends_on:
-      - ordersdb
-      - basket.api
+      ASPNETCORE_ENVIRONMENT: Development
+      BasketApi__BaseUrl: "http://basket.api:8080"
+      MongoDb__ConnectionString: "mongodb+srv://user:B4p1MdiI4yl682ue@cluster0.jhndu.mongodb.net/?appName=Cluster0"
+      MongoDb__DatabaseName: "OrdersDb"
     ports:
       - "6002:8080"
       - "6062:8081"
+
+volumes:
+  orders_mongo:

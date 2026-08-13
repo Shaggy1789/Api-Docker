@@ -2,7 +2,7 @@
 {
     public record DeleteProductCommand(Guid Id) : ICommand<DeleteProductResult>;
     public record DeleteProductResult(bool IsSuccess);
-    internal class DeleteProductCommandHandler(IDocumentSession session,
+    public class DeleteProductCommandHandler(IDocumentSession session,
         ILogger<DeleteProductCommandHandler>logger) : 
         ICommandHandler<DeleteProductCommand, DeleteProductResult>
     {

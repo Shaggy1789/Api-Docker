@@ -14,7 +14,7 @@ namespace Catalog_Api.Models.GetProducts
     }
 
     public record GetProductsResult(PaginatedResult<Product> Products);
-    internal class GetProductsQueryHandler(IDocumentSession session, ILogger<GetProductsQueryHandler> logger)
+    public class GetProductsQueryHandler(IDocumentSession session, ILogger<GetProductsQueryHandler> logger)
         : IQueryHandler<GetProductsQuery, GetProductsResult>
     {
         public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)

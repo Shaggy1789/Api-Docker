@@ -3,15 +3,15 @@ using Orders_API.Endpoints;
 using BuildingBlocks.Behaviors;
 using BuildingBlocks.Exceptions.Handler;
 using Carter;
-using Mapster;
 using MediatR;
 using MongoDB.Driver;
-using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Carter
 builder.Services.AddCarter();
+
+// MediatR
 builder.Services.AddMediatR(conf =>
 {
     conf.RegisterServicesFromAssembly(typeof(Program).Assembly);
@@ -19,27 +19,57 @@ builder.Services.AddMediatR(conf =>
     conf.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
+// Repository
 builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
 
-// Configure MongoDB
-var mongoConnectionString = builder.Configuration["MongoDb:ConnectionString"];
-var mongoDatabaseName = builder.Configuration["MongoDb:DatabaseName"];
-
-if (string.IsNullOrEmpty(mongoConnectionString) || string.IsNullOrEmpty(mongoDatabaseName))
+// HTTP Client
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient("BasketApi", client =>
 {
-    throw new InvalidOperationException("Configuration for MongoDB is missing.");
+    var baseUrl = builder.Configuration["BasketApi:BaseUrl"]
+        ?? builder.Configuration["BasketApi__BaseUrl"]
+        ?? "http://localhost:6001";
+    client.BaseAddress = new Uri(baseUrl);
+});
+
+// Health Checks
+builder.Services.AddHealthChecks();
+
+// MongoDB
+var mongoConnectionString =
+    builder.Configuration["MongoDb:ConnectionString"];
+
+var mongoDatabaseName =
+    builder.Configuration["MongoDb:DatabaseName"];
+
+if (string.IsNullOrWhiteSpace(mongoConnectionString))
+{
+    throw new InvalidOperationException(
+        "MongoDb__ConnectionString is missing.");
 }
 
-var mongoClient = new MongoClient(mongoConnectionString);
-builder.Services.AddSingleton(_ => mongoClient);
+if (string.IsNullOrWhiteSpace(mongoDatabaseName))
+{
+    throw new InvalidOperationException(
+        "MongoDb__DatabaseName is missing.");
+}
 
+// IMPORTANTE: registrar como IMongoClient
+builder.Services.AddSingleton<IMongoClient>(
+    _ => new MongoClient(mongoConnectionString)
+);
+
+// Exception handling
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
-// Configure the HTTP pipeline.
+// HTTP pipeline
 app.UseExceptionHandler();
+
 app.MapCarter();
+
 app.MapHealthChecks("/healthz");
+
 app.Run();

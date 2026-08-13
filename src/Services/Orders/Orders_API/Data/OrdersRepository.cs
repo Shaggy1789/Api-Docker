@@ -38,6 +38,12 @@ public class OrdersRepository : IOrdersRepository
         return await _ordersCollection.Find(filter).ToListAsync(cancellationToken);
     }
 
+    public async Task<List<string>> GetUserIdsAsync(CancellationToken cancellationToken = default)
+    {
+        var userIds = await _ordersCollection.DistinctAsync<string>("CustomerId", Builders<Order>.Filter.Empty, cancellationToken: cancellationToken);
+        return userIds.ToList();
+    }
+
     public async Task SaveAsync(Order order, CancellationToken cancellationToken = default)
     {
         var filter = Builders<Order>.Filter.Eq(x => x.IdempotencyKey, order.IdempotencyKey);

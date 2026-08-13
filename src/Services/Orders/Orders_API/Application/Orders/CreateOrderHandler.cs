@@ -6,7 +6,6 @@ using Orders_API.Models;
 using BuildingBlocks.Exceptions;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Basket.Api.Models;
 
 namespace Orders_API.Application.Orders.CreateOrder;
 
@@ -27,7 +26,7 @@ public class CreateOrderHandler(IOrdersRepository repository, IHttpClientFactory
 
         // 2. Consult Basket API
         var basketClient = _httpClientFactory.CreateClient("BasketApi");
-        var basketResponse = await basketClient.GetAsync($"/api/basket/{command.BasketId}", cancellationToken);
+        var basketResponse = await basketClient.GetAsync($"/basket/{command.BasketId}", cancellationToken);
 
         if (!basketResponse.IsSuccessStatusCode)
         {
@@ -35,10 +34,22 @@ public class CreateOrderHandler(IOrdersRepository repository, IHttpClientFactory
         }
 
         var basketContent = await basketResponse.Content.ReadAsStringAsync(cancellationToken);
-        var basket = System.Text.Json.JsonSerializer.Deserialize<ShoppingCart>(basketContent, new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        JsonDocument basketDoc;
+        try
+        {
+            basketDoc = JsonDocument.Parse(basketContent);
+        }
+        catch
+        {
+            throw new BadRequestException("No se pudo parsear el carrito");
+        }
 
         // 3. Verify basket exists and not empty
-        if (basket is null || basket.Items is null || basket.Items.Count == 0)
+        var cart = basketDoc.RootElement.TryGetProperty("cart", out var cartElement)
+            ? cartElement
+            : basketDoc.RootElement;
+
+        if (!cart.TryGetProperty("items", out var items) || items.GetArrayLength() == 0)
         {
             throw new BadRequestException("El carrito está vacío");
         }
@@ -47,21 +58,21 @@ public class CreateOrderHandler(IOrdersRepository repository, IHttpClientFactory
         var orderItems = new List<OrderItem>();
         decimal subtotal = 0;
 
-        foreach (var item in basket.Items)
+        foreach (var item in items.EnumerateArray())
         {
-            var unitPrice = item.Price;
-            var lineTotal = unitPrice * item.Quantity;
+            var unitPrice = item.TryGetProperty("price", out var priceElement) ? priceElement.GetDecimal() : 0;
+            var quantity = item.TryGetProperty("quantity", out var quantityElement) ? quantityElement.GetInt32() : 1;
 
             orderItems.Add(new OrderItem
             {
-                ProductId = item.ProductId,
-                ProductName = item.ProductName,
-                Quantity = item.Quantity,
+                ProductId = item.TryGetProperty("productId", out var productIdElement) ? Guid.Parse(productIdElement.GetString()) : Guid.Empty,
+                ProductName = item.TryGetProperty("productName", out var productNameElement) ? productNameElement.GetString() : "Producto",
+                Quantity = quantity,
                 UnitPrice = unitPrice,
-                LineTotal = lineTotal
+                LineTotal = unitPrice * quantity
             });
 
-            subtotal += lineTotal;
+            subtotal += unitPrice * quantity;
         }
 
         // 5. Calculate taxes (e.g., 16% VAT)

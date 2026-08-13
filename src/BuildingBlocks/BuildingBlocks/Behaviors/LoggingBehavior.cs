@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace BuildingBlocks.Behaviors
 {
-    public class LoggingBehavior<TRequest,TResponse>(Logger<LoggingBehavior<TRequest,TResponse>>logger) :
+    public class LoggingBehavior<TRequest,TResponse>(ILogger<LoggingBehavior<TRequest,TResponse>>logger) :
         IPipelineBehavior<TRequest,TResponse>
         where TRequest : notnull,IRequest<TResponse>
         where TResponse : notnull
@@ -29,7 +29,7 @@ namespace BuildingBlocks.Behaviors
                 logger.LogWarning("[Perfomance] La peticion {Request} toma {TimeTaken} segundos",
                     typeof(TRequest).Name, timeTaken.Seconds);
             }
-            logger.LogInformation("[Final] Manejar {Request} toma {TimeTaken} segundos", typeof(TResponse).Name);
+            logger.LogInformation("[Final] Manejar {Request} toma {TimeTaken} segundos", typeof(TRequest).Name, timeTaken.Seconds);
             return response;
         }
     }
