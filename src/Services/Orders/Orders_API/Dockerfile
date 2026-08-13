@@ -5,7 +5,7 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ["/src/Services/Orders/Orders_API/Orders_API.csproj", "/src/Services/Orders/Orders_API/"]
+COPY ["Services/Orders/Orders_API/Orders_API.csproj", "Services/Orders/Orders_API/"]
 RUN dotnet restore "Services/Orders/Orders_API/Orders_API.csproj"
 COPY . .
 WORKDIR "/src/Services/Orders/Orders_API"
